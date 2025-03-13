@@ -8,14 +8,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
     - name: Install dependencies
-      run: sudo apt-get install -y gcc make
+      run: choco install make
 
     - name: Build
       run: make
