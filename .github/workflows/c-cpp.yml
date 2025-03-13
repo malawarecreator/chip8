@@ -14,14 +14,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: choco install make
+    - name: Install GCC
+      run: choco install mingw
 
-    - name: Build
-      run: make
-
-    - name: Upload binary (optional)
-      uses: actions/upload-artifact@v4
-      with:
-        name: chip8-binary
-        path: bin/chip8.exe
+    - name: Compile with gcc
+      run: gcc -Wall -Wextra -O2 -o chip8.exe src/chip8.c
