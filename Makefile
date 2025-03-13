@@ -4,8 +4,8 @@ TARGET = bin\chip8.exe
 SRC = src\chip8.c
 
 $(TARGET): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+    @if not exist bin mkdir bin
+    $(CC) $(CFLAGS) $(SRC) -o $(TARGET)
 
 clean:
-	del $(TARGET)
-
+    del $(TARGET)
