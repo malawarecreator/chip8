@@ -1,11 +1,12 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -O2
-TARGET = bin/chip8.exe
-SRC = src/chip8.c
+CC       = gcc
+CFLAGS   = -Wall -Wextra -O2 $(shell sdl2-config --cflags)
+LDFLAGS  = $(shell sdl2-config --libs)
+TARGET   = bin/chip8
+SRC      = src/chip8.c
 
 $(TARGET): $(SRC)
-	
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+	mkdir -p bin
+	$(CC) $(CFLAGS) $(SRC) $(LDFLAGS) -o $(TARGET)
 
 clean:
-	del $(TARGET)
+	rm -rf bin
